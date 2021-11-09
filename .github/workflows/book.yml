@@ -18,6 +18,7 @@ jobs:
             - name: install_gitbook_plugins
               run: |
                   npm install gitbook-cli  -g
+                  npm i gitbook@3.2.2
                   gitbook -v
                   gitbook install
             # - name: build_gitbook
@@ -54,4 +55,4 @@ jobs:
               uses: ad-m/github-push-action@master
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch: pdf-book
+                branch: pdf-book             
