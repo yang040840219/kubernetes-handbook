@@ -36,6 +36,9 @@ jobs:
             #   with:
             #     github_token: ${{ secrets.GITHUB_TOKEN }}
             #     branch:  gh-pages
+            - name: install ebook-conver
+              run: |
+                   sudo -v && wget -nv -O- https://download.calibre-ebook.com/linux-installer.sh | sudo sh /dev/stdin
             - name: build pdf book
               run: |
                   gitbook pdf . ~/book/kubernetes-handbook.pdf
@@ -51,4 +54,4 @@ jobs:
               uses: ad-m/github-push-action@master
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch:  gh-pages              
+                branch: pdf-book             
