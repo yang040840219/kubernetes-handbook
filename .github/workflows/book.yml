@@ -20,19 +20,35 @@ jobs:
                   npm install gitbook-cli  -g
                   gitbook -v
                   gitbook install
-            - name: build_gitbook
+            # - name: build_gitbook
+            #   run: |
+            #       gitbook build      
+            # - name: commit
+            #   run: |
+            #       cd ./_book
+            #       git init
+            #       git config --local user.name "${GITHUB_ACTOR}"
+            #       git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+            #       git add *
+            #       git commit -m "Update by gitbook-action"
+            # - name: push
+            #   uses: ad-m/github-push-action@master
+            #   with:
+            #     github_token: ${{ secrets.GITHUB_TOKEN }}
+            #     branch:  gh-pages
+            - name: build pdf book
               run: |
-                  gitbook build
-            - name: commit
+                  gitbook pdf . ~/book/kubernetes-handbook.pdf
+            - name: commit pdf book
               run: |
-                  cd ./_book
+                  cd ~/book/
                   git init
                   git config --local user.name "${GITHUB_ACTOR}"
                   git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
                   git add *
-                  git commit -m "Update by gitbook-action"
-            - name: push
+                  git commit -m "pdf book"
+            - name: push pdf book
               uses: ad-m/github-push-action@master
               with:
                 github_token: ${{ secrets.GITHUB_TOKEN }}
-                branch:  gh-pages
+                branch:  gh-pages              
