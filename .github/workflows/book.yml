@@ -33,6 +33,6 @@ jobs:
                   git commit -m "Update by gitbook-action"
             - name: push
               uses: ad-m/github-push-action@master
-      	      with:
-        		github_token: ${{ secrets.GITHUB_TOKEN }}
-       			branch: gh-pages
+              with:
+                github_token: ${{ secrets.GITHUB_TOKEN }}
+                branch:  gh-pages
